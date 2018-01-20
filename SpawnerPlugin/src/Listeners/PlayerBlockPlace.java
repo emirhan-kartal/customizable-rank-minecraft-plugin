@@ -32,6 +32,7 @@ public class PlayerBlockPlace implements Listener{
 					for (Spawner s : MainSpawner.spawner.get(e.getPlayer()))
 					{
 						list.add(s.toString());
+						
 					
 					}
 					MainSpawner.spawners.getConfig().set(e.getPlayer().getName(), list);

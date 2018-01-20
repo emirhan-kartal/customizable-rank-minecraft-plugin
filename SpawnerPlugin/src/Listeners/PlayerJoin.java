@@ -1,8 +1,5 @@
 package Listeners;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.util.ArrayList;
 
 import org.bukkit.event.EventHandler;
@@ -27,11 +24,7 @@ public class PlayerJoin implements Listener{
 			{
 				MainSpawner.spawner.get(e.getPlayer()).add(SpawnerMethod.toSpawner(s));
 			}
-			BufferedReader reader = new BufferedReader(new FileReader(new File (new MainSpawner().getDataFolder(),"config.yml")));
-			String str;
-			while ((str = reader.readLine()) != null )
-			MainSpawner.spawners.getConfig().getint
-			MainSpawner.spawner.get(e.getPlayer())
+			
 		}
 		
 		
