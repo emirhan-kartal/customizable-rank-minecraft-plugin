@@ -7,7 +7,7 @@ public class Text {
 	
 	
 	
-	public String colored(String text)
+	public static String colored(String text)
 	{
 		return ChatColor.translateAlternateColorCodes('&', text);
 	}

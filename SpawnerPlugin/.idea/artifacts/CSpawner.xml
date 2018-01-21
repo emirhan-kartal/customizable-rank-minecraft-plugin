@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="CSpawner">
+    <output-path>$USER_HOME$/Desktop/server/plugins</output-path>
+    <root id="archive" name="CSpawner.jar">
+      <element id="module-output" name="SpawnerPlugin" />
+    </root>
+  </artifact>
+</component>

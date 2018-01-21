@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="JavaPrograms">
+    <output-path>$USER_HOME$/Builds</output-path>
+    <root id="archive" name="JavaPrograms.jar" />
+  </artifact>
+</component>
