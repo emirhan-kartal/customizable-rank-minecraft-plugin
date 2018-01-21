@@ -27,7 +27,7 @@ public class MainSpawner extends JavaPlugin implements Listener{
 	    spawners = new Configuration(this,"spawners.db");
 		spawners.saveConfig();
 		SetSpawner.setSpawners();
-		
+		registerEvents();
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable()
 			{
 

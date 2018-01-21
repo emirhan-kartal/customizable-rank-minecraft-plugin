@@ -2,6 +2,8 @@ package Listeners;
 
 import java.util.ArrayList;
 
+import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -24,7 +26,10 @@ public class PlayerJoin implements Listener{
 			{
 				MainSpawner.spawner.get(e.getPlayer()).add(SpawnerMethod.toSpawner(s));
 			}
-			
+			for (OfflinePlayer p : Bukkit.getOfflinePlayers())
+			{
+				
+			}
 		}
 		
 		
