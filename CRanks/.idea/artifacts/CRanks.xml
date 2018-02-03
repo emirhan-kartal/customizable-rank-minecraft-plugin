@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="CRanks">
+    <output-path>$USER_HOME$/Builds</output-path>
+    <root id="archive" name="CRanks.jar">
+      <element id="module-output" name="CRanks" />
+    </root>
+  </artifact>
+</component>

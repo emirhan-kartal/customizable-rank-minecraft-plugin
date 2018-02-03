@@ -1,0 +1,19 @@
+RutbeAtlamaMesaji: '&6Tebrikler <player> ! Yeni Rutben <rank>'
+YetersizKosulMesaji: '&6Rutbe atlamak icin gerekli seylere sahip degilsin.'
+MaksimumRutbe: '&cZaten Son Rutbedesin!'  # Burada <rank> kullanılmaz.
+ranklar:
+  SkyLord:
+    sira: 1
+    adaLeveli: 1000
+    grupAdi: SkyLord
+    para: 5000
+    exp: 50
+  TestRutbesi:
+    sira: 2
+    grupAdi: test
+    para: 5000
+    exp: 2
+    gerekliItemler:
+    - DIAMOND:64
+    - IRON_BLOCK:32
+    - GOLD_INGOT:128

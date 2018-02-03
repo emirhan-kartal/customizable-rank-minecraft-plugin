@@ -1,0 +1,17 @@
+name: CRanks
+author: MhaWTHoR
+version: 1.0.0
+description: Ozel rank olusturabilmek icin bir eklenti.
+main: com.mhawthor.ranks.CRanks
+depend: [Vault]
+commands:
+  CRanks:
+    description: Tum eklenti komutlarini icerir.
+  rutbeatla:
+    description: Rank atlamak icin.
+    aliases: [rankup]
+  rutbelistesi:
+  rankbelirle:
+    description: Oyuncularin rankini degistirmek icin.
+    permission: crank.rankbelirle
+  rankbilgi:
