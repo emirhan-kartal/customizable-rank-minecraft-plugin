@@ -1,10 +1,8 @@
 package com.mhawthor.ranks;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.wasteofplastic.askyblock.ASkyBlockAPI;
 import listeners.PlayerJoin;
 import listeners.PlayerQuit;
-import listeners.PlayerRankUp;
 import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -21,12 +19,14 @@ import utils.events.PlayerRankUpEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
-import java.util.UUID;
 
 import static utils.RankMethod.*;
 
 public class CRanks extends JavaPlugin {
 
+
+
+    public static HashMap<Material,Integer> map = new HashMap<>();
     public static ArrayList<Rank> ranks = new ArrayList<Rank>();
     public static Configuration config;
     public static Configuration var;
@@ -40,7 +40,6 @@ public class CRanks extends JavaPlugin {
         }
         Bukkit.getPluginManager().registerEvents(new PlayerJoin(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerQuit(), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerRankUp(), this);
         Plugin p = Bukkit.getServer().getPluginManager().getPlugin("ASkyBlock");
         skyblockPlugin = p != null;
         var = new Configuration(this);
@@ -59,16 +58,14 @@ public class CRanks extends JavaPlugin {
         if (cmd.getName().equalsIgnoreCase("rankup") || cmd.getName().equalsIgnoreCase("rutbeatla")) {
             Player player = (Player) sender;
             long islandLevel = 0;
-            player.sendMessage(Boolean.toString(skyblockPlugin));
             if (skyblockPlugin) {
                 ASkyBlockAPI skyBlockAPI = ASkyBlockAPI.getInstance();
                 skyBlockAPI.calculateIslandLevel(player.getUniqueId());
                 islandLevel = skyBlockAPI.getLongIslandLevel(player.getUniqueId());
             }
-            if (rank.get(player) != biggest+1) {
+            if (rank.get(player) != biggest) {
             Rank currentRank = getRankById(rank.get(player));
             Rank nextRank = getRankById((short) (rank.get(player) + 1));
-            Bukkit.getConsoleSender().sendMessage(biggest + "  " + nextRank.getId());
 
             if (check(player, nextRank)) {
                 if (skyblockPlugin) {
@@ -202,10 +199,10 @@ public class CRanks extends JavaPlugin {
                     p.sendMessage(Chat.colored("&6Böyle bir rank yok. Eğer Config'de yazmasına rağmen bu hatayı alıyorsanız /cranks configyenile komutunu kullanın veya sunucuyu yeniden başlatın."));
                 }
             }
-        }else if (cmd.getName().equalsIgnoreCase("rankbilgi")) {
+        }else if (cmd.getName().equalsIgnoreCase("rutbebilgi")) {
 
             if (args.length != 1) {
-                sender.sendMessage(Chat.colored("&6Kullanim : /rankbilgi <rank>"));
+                sender.sendMessage(Chat.colored("&6Kullanim : /rutbebilgi <rank>"));
                 return false;
             }
             Rank r = getRankByName(args[0]);
@@ -235,20 +232,14 @@ public class CRanks extends JavaPlugin {
     }
     private boolean check(Player p, Rank r) {
         boolean b = true;
-        int a = 0;
         if (r.getItems() != null) {
             for (ItemStack item : r.getItems()) {
                 if (item == null) continue;
-                p.sendMessage(item.getType() + " ");
-                p.sendMessage(item.getAmount() + " ");
-                boolean test = p.getInventory() == null;
-                p.sendMessage(" ad  " + Boolean.toString(test));
-                if (hasItems(p.getInventory().getContents(), item.getType(), item.getAmount())) {
-                    a++;
+                if (!hasItems(p.getInventory().getContents(), item.getType(), item.getAmount())) {
+                    b = false;
                 }
             }
         }
-        b = a == 0 || a == r.getItems().size() && r.getItems() == null;
         if (p.getLevel() >= r.getExp() && b) {
             EconomyResponse response = VaultM.econ.withdrawPlayer(p, r.getMoney());
             b = response.transactionSuccess();
@@ -275,7 +266,6 @@ public class CRanks extends JavaPlugin {
                 s +=item.getAmount();
             }
         }
-        Bukkit.getConsoleSender().sendMessage(Boolean.toString(s>=amount) + " 2 " );
         return s >= amount;
     }
 
@@ -297,7 +287,6 @@ public class CRanks extends JavaPlugin {
                         rank.setGroupName(config.getConfig().getString("ranklar." + s + "." + str));
                     if (str.equalsIgnoreCase("adaLeveli"))
                         rank.setLevel(config.getConfig().getLong("ranklar." + s + "." + str));
-
                     if (str.equalsIgnoreCase("para"))
                         rank.setMoney(config.getConfig().getLong("ranklar." + s + "." + str));
                     if (str.equalsIgnoreCase("exp"))
