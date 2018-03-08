@@ -1,6 +1,7 @@
 RutbeAtlamaMesaji: '&6Tebrikler <player> ! Yeni Rutben <rank>'
-YetersizKosulMesaji: '&6Rutbe atlamak icin gerekli seylere sahip degilsin.'
+YetersizKosulMesaji: '&c<rank> &6Rutbesine atlamak icin gerekli seylere sahip degilsin.'
 MaksimumRutbe: '&cZaten Son Rutbedesin!'  # Burada <rank> kullanılmaz.
+VarsayilanGrup: Oyuncu #Oyuncu oyuna ilk girdiğinde olacak rankı giriniz.
 ranklar:
   SkyLord:
     sira: 1

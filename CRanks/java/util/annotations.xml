@@ -1,5 +1,5 @@
 <root>
-    <item name='java.utils.ArrayList E get(int)'>
+    <item name='java.com.mhawthor.ranks.utils.ArrayList E get(int)'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
 </root>
