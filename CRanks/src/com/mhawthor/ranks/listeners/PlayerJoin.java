@@ -28,6 +28,7 @@ public class PlayerJoin implements Listener{
             playerConfig.put(e.getPlayer(),player);
             player.getConfig().set("K",0);
             player.getConfig().set("KM",0);
+            player.saveConfig();
             mobkill.put(p,0);
             playerkill.put(p,0);
             setRank(e.getPlayer(), (short) 0);
